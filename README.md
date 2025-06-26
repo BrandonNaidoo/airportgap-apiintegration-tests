@@ -16,8 +16,6 @@
 This project contains C# integration tests for the [Airport Gap API](https://airportgap.com/docs) built using NUnit. The tests demonstrate:
 
 - A reusable HTTP client framework with support for authenticated and unauthenticated requests
-- Comprehensive coverage of key API endpoints with GET, POST, PUT, DELETE methods
-- Use of request and response models with builder patterns for clean test data management
 - FluentAssertions for expressive and maintainable assertions
 - Continuous Integration via Github Actions, CircleCI and static code analysis with SonarCloud
 
