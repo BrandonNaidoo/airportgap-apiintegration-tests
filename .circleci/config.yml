@@ -6,7 +6,8 @@ jobs:
       - image: mcr.microsoft.com/dotnet/sdk:9.0
 
     environment:
-      AIRPORT_GAP_API_TOKEN: << pipeline.parameters.api_token >>
+      AIRPORT_GAP_API_TOKEN: ${AIRPORT_GAP_API_TOKEN}
+
 
     steps:
       - checkout

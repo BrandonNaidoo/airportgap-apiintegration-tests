@@ -5,7 +5,7 @@
 | Service        | Status                                                                                                                                                                                                                                                 |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **GitHub**     | [![GitHub Workflow Status](https://github.com/BrandonNaidoo/airportgap-apiintegration-tests/actions/workflows/run-tests.yml/badge.svg)](https://github.com/BrandonNaidoo/airportgap-apiintegration-tests/actions/workflows/run-tests.yml)
-| **CircleCI**   | [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/)](https://dl.circleci.com/status-badge/redirect/circleci/) |
+| **CircleCI**   | [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/LdsahFmCXeTHzXz4vmYWNf/PkM4oLjrucgogEVyoVNoaZ/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/LdsahFmCXeTHzXz4vmYWNf/PkM4oLjrucgogEVyoVNoaZ/tree/main)
 | **SonarCloud** | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BrandonNaidoo_airportgap-apiintegration-tests&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=BrandonNaidoo_airportgap-apiintegration-tests)    
 
 ---
