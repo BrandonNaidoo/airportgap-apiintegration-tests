@@ -4,9 +4,9 @@
 
 | Service        | Status                                                                                                                                                                                                                                                 |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **GitHub**     | [![GitHub Workflow Status](https://github.com/BrandonNaidoo/)](https://github.com/BrandonNaidoo/)                                        |
+| **GitHub**     | [![GitHub Workflow Status](https://github.com/BrandonNaidoo/airportgap-apiintegration-tests/actions/workflows/run-tests.yml/badge.svg)](https://github.com/BrandonNaidoo/airportgap-apiintegration-tests/actions/workflows/run-tests.yml)
 | **CircleCI**   | [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/)](https://dl.circleci.com/status-badge/redirect/circleci/) |
-| **SonarCloud** | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure)](https://sonarcloud.io/summary/new_code)    
+| **SonarCloud** | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BrandonNaidoo_airportgap-apiintegration-tests&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=BrandonNaidoo_airportgap-apiintegration-tests)    
 
 ---
 
@@ -16,8 +16,6 @@
 This project contains C# integration tests for the [Airport Gap API](https://airportgap.com/docs) built using NUnit. The tests demonstrate:
 
 - A reusable HTTP client framework with support for authenticated and unauthenticated requests
-- Comprehensive coverage of key API endpoints with GET, POST, PUT, DELETE methods
-- Use of request and response models with builder patterns for clean test data management
 - FluentAssertions for expressive and maintainable assertions
 - Continuous Integration via Github Actions, CircleCI and static code analysis with SonarCloud
 

@@ -1,4 +1,4 @@
-name: Run UI Tests
+name: Run Api Tests
 
 on:
   push:
@@ -11,11 +11,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build-test-analyze:
+    name: Build, Test & Analyze
     runs-on: ubuntu-latest
 
     env:
       AIRPORT_GAP_API_TOKEN: ${{ secrets.AIRPORT_GAP_API_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -26,21 +28,28 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Install SonarScanner for .NET
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Set up PATH for .NET tools
+        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Begin SonarCloud analysis
+        run: |
+          dotnet sonarscanner begin \
+            /k:"BrandonNaidoo_airportgap-apiintegration-tests" \
+            /o:"brandonnaidoo" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="https://sonarcloud.io"
+
       - name: Restore dependencies
         run: dotnet restore
 
       - name: Build
         run: dotnet build --no-restore --configuration Release
 
-      - name: Run tests and save results
-        run: |
-          mkdir -p TestResults
-          dotnet test --no-build --configuration Release \
-            --logger "trx;LogFileName=test-results.trx" \
-            --results-directory TestResults
+      - name: Run tests
+        run: dotnet test --no-build --configuration Release
 
-      - name: Upload test result artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: TestResults/test-results.trx
+      - name: End SonarCloud analysis
+        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
