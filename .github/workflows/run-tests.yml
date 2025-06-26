@@ -38,10 +38,9 @@ jobs:
         run: |
           dotnet sonarscanner begin \
             /k:"BrandonNaidoo_airportgap-apiintegration-tests" \
-            /o:"brandonnaidoo" \
+            /o:"brandonnaidoo" \ 
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
-            /d:sonar.host.url="https://sonarcloud.io" \
-            /s:"SonarCloud.Analysis.xml" || true
+            /d:sonar.host.url="https://sonarcloud.io"
 
       - name: Restore dependencies
         run: dotnet restore
