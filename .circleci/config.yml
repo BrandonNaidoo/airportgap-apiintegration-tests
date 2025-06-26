@@ -23,6 +23,16 @@ jobs:
           command: dotnet build --no-restore --configuration Release
 
       - run:
+          name: Verify AIRPORT_GAP_API_TOKEN
+          command: |
+            if [ -z "$AIRPORT_GAP_API_TOKEN" ]; then
+              echo "❌ AIRPORT_GAP_API_TOKEN is missing"
+              exit 1
+            else
+              echo "✅ AIRPORT_GAP_API_TOKEN is set"
+            fi
+
+      - run:
           name: Run integration tests and collect results
           command: |
             mkdir -p TestResults
