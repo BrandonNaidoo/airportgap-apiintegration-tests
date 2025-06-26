@@ -14,22 +14,12 @@ jobs:
       - checkout
 
       - run:
-          name: List environment variables
-          command: env | sort
-
-      - run:
           name: Restore dependencies
           command: dotnet restore
 
       - run:
           name: Build solution
           command: dotnet build --no-restore --configuration Release
-
-      - run:
-          name: Show token prefix (debug)
-          shell: /bin/bash
-          command: |
-            echo "Token starts with: ${AIRPORT_GAP_API_TOKEN:0:4}"
 
       - run:
           name: Run integration tests and collect results
