@@ -6,13 +6,16 @@ jobs:
       - image: mcr.microsoft.com/dotnet/sdk:9.0
 
     environment:
-      AIRPORT_GAP_API_TOKEN: ${AIRPORT_GAP_API_TOKEN}
       MSBUILDDISABLENODEREUSE: 1
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
       MSBUILDTERMINALLOGGER: false
 
     steps:
       - checkout
+
+      - run:
+          name: List environment variables
+          command: env | sort
 
       - run:
           name: Restore dependencies
