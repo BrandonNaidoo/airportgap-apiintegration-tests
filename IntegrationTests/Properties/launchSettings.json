@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "IntegrationTests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "AIRPORT_GAP_API_TOKEN": "DStdJYeRjQ8Ef22dNJAwy7Xd"
+      }
+    }
+  }
+}

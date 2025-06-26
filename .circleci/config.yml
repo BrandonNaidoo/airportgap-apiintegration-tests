@@ -1,0 +1,39 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:9.0
+
+    environment:
+      AIRPORT_GAP_API_TOKEN: << pipeline.parameters.api_token >>
+
+    steps:
+      - checkout
+
+      - run:
+          name: Restore dependencies
+          command: dotnet restore
+
+      - run:
+          name: Build solution
+          command: dotnet build --no-restore --configuration Release
+
+      - run:
+          name: Run integration tests and collect results
+          command: |
+            mkdir -p TestResults
+            dotnet test --no-build --configuration Release \
+              --logger "trx;LogFileName=test-results.trx" \
+              --results-directory TestResults
+
+      - store_artifacts:
+          path: TestResults
+          destination: test-results
+
+workflows:
+  version: 2
+  test-workflow:
+    jobs:
+      - test:
+          context: airportgap-secrets
