@@ -41,5 +41,4 @@ jobs:
 workflows:
   test-workflow:
     jobs:
-      - test:
-          context: airportgap-secrets
+      - test
