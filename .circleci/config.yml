@@ -23,14 +23,10 @@ jobs:
           command: dotnet build --no-restore --configuration Release
 
       - run:
-          name: Verify AIRPORT_GAP_API_TOKEN
+          name: Show token prefix (debug)
+          shell: /bin/bash
           command: |
-            if [ -z "$AIRPORT_GAP_API_TOKEN" ]; then
-              echo "❌ AIRPORT_GAP_API_TOKEN is missing"
-              exit 1
-            else
-              echo "✅ AIRPORT_GAP_API_TOKEN is set"
-            fi
+            echo "Token starts with: ${AIRPORT_GAP_API_TOKEN:0:4}"
 
       - run:
           name: Run integration tests and collect results
@@ -49,6 +45,6 @@ jobs:
           destination: test-results
 
 workflows:
-  test-workflow:
+  run-api-tests:
     jobs:
       - test
