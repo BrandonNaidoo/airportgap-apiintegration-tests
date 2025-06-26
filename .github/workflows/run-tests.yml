@@ -38,7 +38,7 @@ jobs:
         run: |
           dotnet sonarscanner begin \
             /k:"BrandonNaidoo_airportgap-apiintegration-tests" \
-            /o:"brandonnaidoo" \ 
+            /o:"brandonnaidoo" \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.host.url="https://sonarcloud.io"
 
