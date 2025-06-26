@@ -6,7 +6,9 @@ jobs:
       - image: mcr.microsoft.com/dotnet/sdk:9.0
 
     environment:
-      AIRPORT_GAP_API_TOKEN: << pipeline.parameters.api_token >>
+      MSBUILDDISABLENODEREUSE: 1
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      MSBUILDTERMINALLOGGER: false
 
     steps:
       - checkout
@@ -25,15 +27,17 @@ jobs:
             mkdir -p TestResults
             dotnet test --no-build --configuration Release \
               --logger "trx;LogFileName=test-results.trx" \
-              --results-directory TestResults
+              --results-directory TestResults \
+              --verbosity quiet
+
+      - store_test_results:
+          path: TestResults
 
       - store_artifacts:
           path: TestResults
           destination: test-results
 
 workflows:
-  version: 2
-  test-workflow:
+  run-api-tests:
     jobs:
-      - test:
-          context: airportgap-secrets
+      - test

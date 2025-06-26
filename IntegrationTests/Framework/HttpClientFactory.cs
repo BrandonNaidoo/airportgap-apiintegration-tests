@@ -14,6 +14,7 @@ namespace IntegrationTests.Framework
             if (authenticated)
             {
                 var token = Environment.GetEnvironmentVariable("AIRPORT_GAP_API_TOKEN");
+
                 if (string.IsNullOrWhiteSpace(token))
                 {
                     throw new InvalidOperationException("Missing AIRPORT_GAP_API_TOKEN environment variable");
