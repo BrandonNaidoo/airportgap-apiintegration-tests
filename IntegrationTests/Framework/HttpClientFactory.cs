@@ -14,6 +14,17 @@ namespace IntegrationTests.Framework
             if (authenticated)
             {
                 var token = Environment.GetEnvironmentVariable("AIRPORT_GAP_API_TOKEN");
+                
+                if (!string.IsNullOrEmpty(token))
+                {
+                    var preview = token.Length >= 4 ? token.Substring(0, 4) : token;
+                    Console.WriteLine($"Token starts with: {preview}");
+                }
+                else
+                {
+                    Console.WriteLine("Token is null or empty");
+                }
+
                 if (string.IsNullOrWhiteSpace(token))
                 {
                     throw new InvalidOperationException("Missing AIRPORT_GAP_API_TOKEN environment variable");
