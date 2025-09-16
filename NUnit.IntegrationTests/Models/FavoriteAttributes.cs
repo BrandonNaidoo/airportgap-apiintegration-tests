@@ -2,12 +2,12 @@
 
 namespace IntegrationTests.Models
 {
-    internal class FavoriteAttributes
+    internal sealed class FavoriteAttributes
     {
         [JsonPropertyName("note")]
-        public string Note { get; set; } = default!;
+        public string Note { get; set; }
 
         [JsonPropertyName("airport")]
-        public FavoriteAirport Airport { get; set; } = default!;
+        public FavoriteAirport Airport { get; set; }
     }
 }

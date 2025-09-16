@@ -25,6 +25,14 @@ namespace IntegrationTests.Framework
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return JsonSerializer.Deserialize<T>(json, JsonOptions);
         }
+        internal async Task<T?> PatchAsync<T>(Uri endpoint)
+        {
+            var response = await _client.PatchAsync(endpoint, null).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            return JsonSerializer.Deserialize<T>(json, JsonOptions);
+        }
 
         internal async Task<T?> PostAsync<T>(Uri endpoint, object requestBody)
         {
@@ -48,7 +56,6 @@ namespace IntegrationTests.Framework
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return JsonSerializer.Deserialize<T>(json, JsonOptions);
         }
-
 
         internal async Task<T?> PutAsync<T>(Uri endpoint, object requestBody)
         {

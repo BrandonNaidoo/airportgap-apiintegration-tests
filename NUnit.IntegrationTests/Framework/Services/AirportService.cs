@@ -23,5 +23,12 @@ namespace IntegrationTests.Framework.Services
             await client.DeleteAsync(uri).ConfigureAwait(false);
         }
 
+        public static async Task<FavoritesResponse> UpdateFavoriteAsync(AirportGapClient client, string airportId, string? note = null)
+        {
+            var uri = Endpoints.UpdateFavorite(airportId, note);
+            var response = await client.PatchAsync<FavoritesResponse>(uri).ConfigureAwait(false);
+            return response!;
+        }
+
     }
 }

@@ -2,9 +2,9 @@
 
 namespace IntegrationTests.Models
 {
-    internal class FavoritesResponse
+    internal sealed class FavoritesResponse
     {
         [JsonPropertyName("data")]
-        public FavoriteData Data { get; set; } = default!;
+        public FavoriteData Data { get; set; }
     }
 }

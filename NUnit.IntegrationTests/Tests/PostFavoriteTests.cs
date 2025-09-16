@@ -1,11 +1,12 @@
 ﻿using FluentAssertions;
+
 using IntegrationTests.Framework.Services;
 using IntegrationTests.Models;
 
 namespace IntegrationTests.Tests
 {
     [TestFixture]
-    public class FavoritesTests : TestBase
+    public class PostFavoriteTests : TestBase
     {
         public override bool UseAuthenticatedClient => true;
 
@@ -19,10 +20,11 @@ namespace IntegrationTests.Tests
         public async Task GivenValidAirportId_WhenAddFavorite_ThenReturnsFavoriteData()
         {
             // Arrange
-            const string airportId = "JFK"; 
+            const string airportId = "JFK";
+            string note = faker.Random.Words(3);
 
             // Act
-            var response = await AirportService.AddFavoriteAsync(Client, airportId).ConfigureAwait(false);
+            var response = await AirportService.AddFavoriteAsync(Client, airportId, note).ConfigureAwait(false);
 
             // Assert
             response.Should().NotBeNull();

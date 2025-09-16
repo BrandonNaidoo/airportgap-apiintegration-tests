@@ -1,37 +1,37 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace IntegrationTests.Models
+namespace RestAssured.IntegrationTests.Models
 {
-    internal class FavoriteAirport
+    internal sealed class FavoriteAirport
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
         [JsonPropertyName("name")]
-        public string Name { get; set; } = default!;
+        public string Name { get; set; }
 
         [JsonPropertyName("city")]
-        public string City { get; set; } = default!;
+        public string City { get; set; }
 
         [JsonPropertyName("country")]
-        public string Country { get; set; } = default!;
+        public string Country { get; set; }
 
         [JsonPropertyName("iata")]
-        public string Iata { get; set; } = default!;
+        public string Iata { get; set; }
 
         [JsonPropertyName("icao")]
-        public string Icao { get; set; } = default!;
+        public string Icao { get; set; }
 
         [JsonPropertyName("latitude")]
-        public string Latitude { get; set; } = default!;
+        public string Latitude { get; set; }
 
         [JsonPropertyName("longitude")]
-        public string Longitude { get; set; } = default!;
+        public string Longitude { get; set; }
 
         [JsonPropertyName("altitude")]
         public int Altitude { get; set; }
 
         [JsonPropertyName("timezone")]
-        public string Timezone { get; set; } = default!;
+        public string Timezone { get; set; }
     }
 }
