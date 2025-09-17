@@ -39,7 +39,7 @@ jobs:
           dotnet sonarscanner begin \
             /k:"BrandonNaidoo_airportgap-apiintegration-tests" \
             /o:"brandonnaidoo" \
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url="https://sonarcloud.io"
 
       - name: Restore dependencies
@@ -57,4 +57,4 @@ jobs:
           newman run "./Postman.IntegrationTests/AirportGapTests.postman_collection.json" --env-var "token=$AIRPORT_GAP_API_TOKEN"
 
       - name: End SonarCloud analysis
-        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        run: dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
