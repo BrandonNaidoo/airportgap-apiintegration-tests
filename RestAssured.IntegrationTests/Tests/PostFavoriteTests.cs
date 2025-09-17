@@ -45,7 +45,7 @@ internal class PostFavoriteTests : Testbase
           .Body("$.data", NHamcrest.Is.NotNull());
     }
 
-    public void ClearAllFavorites()
+    internal void ClearAllFavorites()
     {
         Given()
           .Spec(authRequestSpecification)

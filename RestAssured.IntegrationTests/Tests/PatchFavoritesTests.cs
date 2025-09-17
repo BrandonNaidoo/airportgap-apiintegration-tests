@@ -37,7 +37,7 @@ namespace RestAssured.IntegrationTests.Tests
               .Body("$.data.attributes.note", NHamcrest.Is.EqualTo(updatedNote));
         }
 
-        private string AddFavorite()
+        internal string AddFavorite()
         {
             const string airportId = "KIX";
 
@@ -58,7 +58,7 @@ namespace RestAssured.IntegrationTests.Tests
                         .Extract().Body("$.data.id");
         }
 
-        public void ClearAllFavorites()
+        internal void ClearAllFavorites()
         {
             Given()
               .Spec(authRequestSpecification)

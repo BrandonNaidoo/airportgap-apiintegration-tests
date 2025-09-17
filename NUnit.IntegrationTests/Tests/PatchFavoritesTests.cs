@@ -27,7 +27,7 @@ internal sealed class PatchFavoritesTests : TestBase
         response.Data.Attributes.Note.Should().Be(updatedNote);
     }
 
-    public async Task<string> AddFavorite()
+    internal async Task<string> AddFavorite()
     {
         const string airportId = "JFK";
         string note = faker.Random.Words(3);

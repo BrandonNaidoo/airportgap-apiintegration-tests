@@ -36,7 +36,7 @@ namespace RestAssured.IntegrationTests.Tests
         {
         }
 
-        private RequestSpecBuilder CreateBaseRequestSpecBuilder()
+        private static RequestSpecBuilder CreateBaseRequestSpecBuilder()
         {
             LogConfiguration log = new LogConfiguration { RequestLogLevel = RequestLogLevel.All, ResponseLogLevel = ResponseLogLevel.All };
 
