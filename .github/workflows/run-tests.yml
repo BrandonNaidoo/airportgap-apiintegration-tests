@@ -54,7 +54,7 @@ jobs:
 
       - name: Run POSTMAN collection
         run: |
-          newman run "./Postman.IntegrationTests/AirportGapTests.postman_collection.json" --env-var "token=${{ secrets.AIRPORT_GAP_API_TOKEN }}"
+          newman run "./Postman.IntegrationTests/AirportGapTests.postman_collection.json" --env-var "token=AIRPORT_GAP_API_TOKEN"
 
       - name: End SonarCloud analysis
         run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
