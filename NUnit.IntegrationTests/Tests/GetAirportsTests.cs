@@ -1,17 +1,19 @@
+using AirportGap.Models.Models;
+
 using FluentAssertions;
+
 using IntegrationTests.Framework.Services;
-using IntegrationTests.Models;
 
 namespace IntegrationTests.Tests
 {
     [TestFixture]
-    public class AirportsTests : TestBase
+    internal sealed class GetAirportsTests : TestBase
     {
         [Test]
         public async Task GivenValidRequest_WhenGetAirports_ThenReturnsListOfAirports()
         {
             // Act
-            var response = await AirportService.GetAirportsAsync(Client).ConfigureAwait(false); 
+            var response = await AirportService.GetAirportsAsync(Client).ConfigureAwait(false);
 
             // Assert
             response.Should().NotBeNull();
