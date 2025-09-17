@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  newman: postman/newman@5.3.2
+
 jobs:
   test:
     docker:
@@ -41,3 +44,8 @@ workflows:
   run-api-tests:
     jobs:
       - test
+      - newman/run:
+          name: run-postman-tests
+          collection: "./Postman.IntegrationTests/AirportGapTests.postman_collection.json"
+          env:
+            token: $AIRPORT_GAP_API_TOKEN
