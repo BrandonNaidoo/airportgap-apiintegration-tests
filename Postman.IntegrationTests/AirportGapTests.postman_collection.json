@@ -270,24 +270,24 @@
 	],
 	"variable": [
 		{
+			"key": "airportId",
+			"value": "KIX"
+		},
+		{
 			"key": "favoriteId",
 			"value": ""
 		},
 		{
-			"key": "airportId",
-			"value": ""
-		},
-		{
-			"key": "url",
-			"value": ""
-		},
-		{
 			"key": "note",
-			"value": ""
+			"value": "This is a note"
 		},
 		{
 			"key": "updatedNote",
-			"value": ""
+			"value": "This note is updated"
+		},
+		{
+			"key": "url",
+			"value": "https://airportgap.com/api"
 		}
 	]
 }
