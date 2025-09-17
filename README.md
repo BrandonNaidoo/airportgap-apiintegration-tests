@@ -68,12 +68,20 @@ This will execute the NUnit tests, using the API token from the environment vari
 
 ## Project Structure
 
-- `Integration-tests/`
-  - `Framework/` — HTTP client, factories, request/response builders
-  - `Models/` — Request and response data models
-  - `Tests/` — NUnit test classes organized by API features
+- `.github/` — GitHub Actions workflows for running tests
 - `.circleci/` — CircleCI configuration for CI pipelines
-- `README.md` — This documentation
+- `AirportGap.Models/`
+  - `Models/` — Request and response data models
+- `NUnit.IntegrationTests/`
+  - `Framework/` — HTTP client, factories, request/response builders
+  - `Tests/` — NUnit test classes organized by API features
+- `RestAssured.IntegrationTests/`
+  - `Framework/` — HTTP client, factories, request/response builders
+  - `Tests/` — RestAssured.Net test classes organized by API features
+- `.editorconfig` — Code style and formatting rules
+- `.gitignore` — Files and folders to ignore in Git
+- `LICENSE` — License information for the project
+- `README.md` — Project documentation and setup instructions
 
 ---
 
