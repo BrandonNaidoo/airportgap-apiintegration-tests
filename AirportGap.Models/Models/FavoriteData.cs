@@ -1,8 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿#pragma warning disable CS8618 // Non-nullable property is uninitialized
+using System.Text.Json.Serialization;
 
-namespace RestAssured.IntegrationTests.Models
+namespace AirportGap.Models.Models
 {
-    internal sealed class FavoriteData
+    public sealed class FavoriteData
     {
         [JsonPropertyName("id")]
         public string Id { get; set; }

@@ -1,7 +1,8 @@
 ﻿using System.Net;
 
+using AirportGap.Models.Models;
+
 using RestAssured.IntegrationTests.Framework;
-using RestAssured.IntegrationTests.Models;
 
 using static RestAssured.Dsl;
 

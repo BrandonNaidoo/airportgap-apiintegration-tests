@@ -1,12 +1,15 @@
+﻿#pragma warning disable CS8618 // Non-nullable property is uninitialized
 using System.Text.Json.Serialization;
 
-namespace IntegrationTests.Models
+namespace AirportGap.Models.Models
 {
-    internal sealed class AirportAttributes
+    public sealed class FavoriteAirport
     {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
 
-        [JsonPropertyName("altitude")]
-        public int Altitude { get; set; }
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
 
         [JsonPropertyName("city")]
         public string City { get; set; }
@@ -26,8 +29,8 @@ namespace IntegrationTests.Models
         [JsonPropertyName("longitude")]
         public string Longitude { get; set; }
 
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
+        [JsonPropertyName("altitude")]
+        public int Altitude { get; set; }
 
         [JsonPropertyName("timezone")]
         public string Timezone { get; set; }

@@ -5,7 +5,7 @@ using RestAssured.Request.Builders;
 
 namespace RestAssured.IntegrationTests.Tests
 {
-    public class Testbase
+    public abstract class Testbase
     {
         public RequestSpecification unAuthRequestSpecification;
         public RequestSpecification authRequestSpecification;
@@ -16,10 +16,6 @@ namespace RestAssured.IntegrationTests.Tests
         {
             unAuthRequestSpecification = CreateBaseRequestSpecBuilder()
                 .Build();
-
-
-            string email = "test@airport.com";
-            string password = "password1234$";
 
             string token = "token=" + Environment.GetEnvironmentVariable("AIRPORT_GAP_API_TOKEN");
 

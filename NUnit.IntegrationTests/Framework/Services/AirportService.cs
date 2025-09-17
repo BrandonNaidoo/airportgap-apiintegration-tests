@@ -1,4 +1,4 @@
-﻿using IntegrationTests.Models;
+﻿using AirportGap.Models.Models;
 
 namespace IntegrationTests.Framework.Services
 {

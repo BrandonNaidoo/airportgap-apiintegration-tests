@@ -1,8 +1,9 @@
+#pragma warning disable CS8618 // Non-nullable property is uninitialized
 using System.Text.Json.Serialization;
 
-namespace IntegrationTests.Models
+namespace AirportGap.Models.Models
 {
-    internal sealed class Airport
+    public sealed class Airport
     {
         [JsonPropertyName("id")]
         public string Id { get; set; }

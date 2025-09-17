@@ -1,7 +1,8 @@
+using AirportGap.Models.Models;
+
 using FluentAssertions;
 
 using IntegrationTests.Framework.Services;
-using IntegrationTests.Models;
 
 namespace IntegrationTests.Tests
 {

@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\AirportGap.Models\AirportGap.Models.csproj" />
   </ItemGroup>
 
 </Project>
