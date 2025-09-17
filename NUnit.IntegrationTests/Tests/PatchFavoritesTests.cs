@@ -4,7 +4,7 @@ using IntegrationTests.Framework.Services;
 using IntegrationTests.Tests;
 
 namespace Integration_Tests.Tests;
-internal class PatchFavoritesTests : TestBase
+internal sealed class PatchFavoritesTests : TestBase
 {
     public override bool UseAuthenticatedClient => true;
 

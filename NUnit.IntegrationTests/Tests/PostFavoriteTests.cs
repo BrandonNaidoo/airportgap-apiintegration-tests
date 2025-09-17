@@ -7,7 +7,7 @@ using IntegrationTests.Framework.Services;
 namespace IntegrationTests.Tests
 {
     [TestFixture]
-    public class PostFavoriteTests : TestBase
+    internal sealed class PostFavoriteTests : TestBase
     {
         public override bool UseAuthenticatedClient => true;
 

@@ -4,7 +4,7 @@ using IntegrationTests.Framework;
 
 namespace IntegrationTests.Tests
 {
-    public abstract class TestBase
+    internal abstract class TestBase
     {
         public AirportGapClient Client { get; private set; }
         public Faker faker;

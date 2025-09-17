@@ -7,7 +7,7 @@ using IntegrationTests.Framework.Services;
 namespace IntegrationTests.Tests
 {
     [TestFixture]
-    public class GetAirportsTests : TestBase
+    internal sealed class GetAirportsTests : TestBase
     {
         [Test]
         public async Task GivenValidRequest_WhenGetAirports_ThenReturnsListOfAirports()
