@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  newman: postman/newman@1.0.0
-
 jobs:
   test:
     docker:
