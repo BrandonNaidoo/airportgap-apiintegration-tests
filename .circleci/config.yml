@@ -44,9 +44,6 @@ jobs:
     docker:
       - image: node:16
 
-    environment:
-      token: $AIRPORT_GAP_API_TOKEN
-
     steps:
       - checkout
       - run:
@@ -55,7 +52,7 @@ jobs:
 
       - run:
           name: Run Postman Collection
-          command: newman run "./Postman.IntegrationTests/AirportGapTests.postman_collection.json"
+          command: newman run "./Postman.IntegrationTests/AirportGapTests.postman_collection.json" --env-var "token=${AIRPORT_GAP_API_TOKEN}"
 
 workflows:
   version: 2
