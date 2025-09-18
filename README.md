@@ -75,6 +75,7 @@ This will execute the NUnit tests, using the API token from the environment vari
 - `NUnit.IntegrationTests/`
   - `Framework/` — HTTP client, factories, request/response builders
   - `Tests/` — NUnit test classes organized by API features
+- `Postman.IntegrationTests/`  — Postman Collection organized by API features
 - `RestAssured.IntegrationTests/`
   - `Framework/` — HTTP client, factories, request/response builders
   - `Tests/` — RestAssured.Net test classes organized by API features

@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "1930b2b9-6337-46f7-bde7-afd9050b0041",
+		"name": "AirportGapTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2198502"
+	},
+	"item": [
+		{
+			"name": "Airports",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response to have a valid JSON body\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"const body = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response should not be null\", function(){\r",
+							"    pm.expect(body).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response data should not be null\", function(){\r",
+							"    pm.expect(body.data).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should contain the correct airportId\", function () {\r",
+							"    pm.expect(body.data.id).to.eql(pm.collectionVariables.get(\"airportId\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/airports/{{airportId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"airports",
+						"{{airportId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Favorites",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response to have a valid JSON body\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should not be null\", function(){\r",
+							"    const body = pm.response.json();\r",
+							"    pm.expect(body).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should have a favoriteId\", function () {\r",
+							"    var body = JSON.parse(pm.response.text());\r",
+							"    pm.expect(body.data.id).to.not.be.null;\r",
+							"    pm.collectionVariables.set(\"favoriteId\", body.data.id);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// execute a ClearAllFavorites method before running this script\r",
+							"pm.sendRequest({\r",
+							"    url: pm.collectionVariables.get(\"url\") + \"/favorites/clear_all\",\r",
+							"    method: \"DELETE\",\r",
+							"    header: {\r",
+							"        \"Authorization\": \"Token \" + pm.environment.get(\"token\")\r",
+							"    }    \r",
+							"}, function (err, response) {\r",
+							"    if (err) {\r",
+							"        console.log(err);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/favorites?airport_id={{airportId}}&note={{note}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"favorites"
+					],
+					"query": [
+						{
+							"key": "airport_id",
+							"value": "{{airportId}}"
+						},
+						{
+							"key": "note",
+							"value": "{{note}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Favorites",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest({\r",
+							"    url: pm.collectionVariables.get(\"url\") + \"/favorites/clear_all\",\r",
+							"    method: \"DELETE\",\r",
+							"    header: {\r",
+							"        \"Authorization\": \"Token \" + pm.environment.get(\"token\")\r",
+							"    }    \r",
+							"}, function (err, response) {\r",
+							"    if (err) {\r",
+							"        console.log(err);\r",
+							"    } else{\r",
+							"        pm.sendRequest({\r",
+							"            url: pm.collectionVariables.get(\"url\") + \"/favorites?airport_id=\" + pm.collectionVariables.get(\"airportId\") + \"&note=\" + pm.collectionVariables.get(\"note\"),\r",
+							"            method: \"POST\",\r",
+							"            header: {\r",
+							"                \"Authorization\": \"Token \" + pm.environment.get(\"token\")\r",
+							"            }\r",
+							"        }, function (err, response) {\r",
+							"            if (err) {\r",
+							"                console.log(err);\r",
+							"            } else{\r",
+							"                var jsonData = response.json();\r",
+							"                pm.collectionVariables.set(\"favoriteId\", jsonData.data.id);        \r",
+							"            }\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response to have a valid JSON body\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"const body = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response should not be null\", function(){\r",
+							"    pm.expect(body).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should have the correct data\", function(){\r",
+							"    pm.expect(body.data.id).to.equal(pm.collectionVariables.get(\"favoriteId\"));\r",
+							"    pm.expect(body.data.attributes.note).to.equal(pm.collectionVariables.get(\"updatedNote\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/favorites/{{favoriteId}}?note={{updatedNote}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"favorites",
+						"{{favoriteId}}"
+					],
+					"query": [
+						{
+							"key": "note",
+							"value": "{{updatedNote}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "airportId",
+			"value": "KIX"
+		},
+		{
+			"key": "favoriteId",
+			"value": ""
+		},
+		{
+			"key": "note",
+			"value": "This is a note"
+		},
+		{
+			"key": "updatedNote",
+			"value": "This note is updated"
+		},
+		{
+			"key": "url",
+			"value": "https://airportgap.com/api"
+		}
+	]
+}

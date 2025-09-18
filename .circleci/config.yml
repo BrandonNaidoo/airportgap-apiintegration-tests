@@ -37,7 +37,23 @@ jobs:
           path: TestResults
           destination: test-results
 
+  run_postman_tests:
+    docker:
+      - image: node:16
+
+    steps:
+      - checkout
+      - run:
+          name: Install Newman
+          command: npm install -g newman
+
+      - run:
+          name: Run Postman Collection
+          command: newman run "./Postman.IntegrationTests/AirportGapTests.postman_collection.json" --env-var "token=${AIRPORT_GAP_API_TOKEN}"
+
 workflows:
+  version: 2
   run-api-tests:
     jobs:
       - test
+      - run_postman_tests
