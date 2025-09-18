@@ -47,4 +47,4 @@ workflows:
       - newman/run:
           name: run-postman-tests
           collection: "./Postman.IntegrationTests/AirportGapTests.postman_collection.json"
-          additional-options: "--env-var token=$AIRPORT_GAP_API_TOKEN"
+          additional-options: "--env-var token=${AIRPORT_GAP_API_TOKEN}"
