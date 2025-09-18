@@ -55,7 +55,7 @@ jobs:
 
       - run:
           name: Run Postman Collection
-          command: newman run ./Postman.IntegrationTests/AirportGapTests.postman_collection.json --env-var "token=$AIRPORT_GAP_API_TOKEN"
+          command: newman run "./Postman.IntegrationTests/AirportGapTests.postman_collection.json" --env-var "token=${AIRPORT_GAP_API_TOKEN}"
 
 workflows:
   version: 2
