@@ -45,7 +45,7 @@ jobs:
       - image: node:16
 
     environment:
-      AIRPORT_GAP_API_TOKEN: $AIRPORT_GAP_API_TOKEN
+      token: $AIRPORT_GAP_API_TOKEN
 
     steps:
       - checkout
@@ -62,6 +62,4 @@ workflows:
   run-api-tests:
     jobs:
       - test
-      - run_postman_tests:
-          requires:
-            - test
+      - run_postman_tests
